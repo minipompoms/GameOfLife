@@ -64,4 +64,3 @@ fabric.properties
 .gitignore
 .idea/
 GameOfLife.iml
-src/
