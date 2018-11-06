@@ -7,8 +7,8 @@ public class Cell {
 
     private Point point;
     private boolean isAlive;
-    ArrayList<Cell> neighbors = new ArrayList<>();
-
+    ArrayList<Cell> neighbors;// = new ArrayList<>();
+    private ArrayList<Cell> aliveNeighbors;
 
     public Cell(Point point){
         this.point = point;
@@ -31,7 +31,11 @@ public class Cell {
         this.point = point;
     }
 
-    public ArrayList<Cell> setAllNeighbors(Cell cell) {
+
+    //is there a better way?
+    //need to validate points to ensure they are in the grid
+    //can we do this without making a new point, and instead access the cells in the grid?
+    public void setAllNeighbors(Cell cell) {
         Point point = new Point();
         int x = cell.getPoint().x;
         int y = cell.getPoint().y;
@@ -62,7 +66,21 @@ public class Cell {
         point.setLocation(x+1, y+1);
         cell.setPoint(point);
         neighbors.add(cell);
-        return neighbors;
+        //return neighbors;
+        setAliveNeighbors();
     }
 
+    public void setAliveNeighbors(){
+        int size = neighbors.size();
+        for(int i = 0; i < size; i++) {
+            Cell neighbor = neighbors.get(i);
+            if(neighbor.isAlive()){
+                aliveNeighbors.add(neighbor);
+            }
+        }
     }
+
+    public ArrayList<Cell> getAliveNeighbors() {
+        return aliveNeighbors;
+    }
+}
