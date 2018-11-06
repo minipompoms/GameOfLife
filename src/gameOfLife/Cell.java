@@ -35,7 +35,6 @@ public class Cell {
     //is there a better way?
     //need to validate points to ensure they are in the grid
     //can we do this without making a new point, and instead access the cells in the grid?
-    //can we do it all in one method, instead of creating 2 array lists?
     public void setAllNeighbors(Cell cell) {
         Point point = new Point();
         int x = cell.getPoint().x;

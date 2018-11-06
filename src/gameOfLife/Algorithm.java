@@ -11,11 +11,9 @@ public class Algorithm {
 
     public Algorithm(Grid grid) {
         this.grid = grid;
-
-        nextGen(grid);
     }
 
-    private void nextGen(Grid grid) {
+    private Grid nextGen(Grid grid) {
         int liveNeighbors;
         for (Cell[] cellRow : grid.getGrid()) {
             for (Cell cell : cellRow) {
@@ -30,11 +28,13 @@ public class Algorithm {
                         cell.setAlive(false);
                         break;
                 }
-
             }
-
         }
+        return grid;
+    }
 
-
+    public Grid getNextGrid() {
+        nextGen(grid);
+        return grid;
     }
 }

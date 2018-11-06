@@ -12,7 +12,7 @@ public class Grid {
     private Cell[][] grid;
     private final Random RANDOM = new Random();
     private ArrayList<Cell> aliveNeighbors;
-    private Algorithm algorithm;
+    private Algorithm algorithm = new Algorithm(this);
 
     public Grid(int rows, int columns) {
         this.rows = rows;
@@ -48,7 +48,7 @@ public class Grid {
     }
 
     void getNextGen() {
-        algorithm = new Algorithm(this);
+        algorithm.getNextGrid();
     }
 
     public Cell getCell() {
