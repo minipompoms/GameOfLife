@@ -11,7 +11,7 @@ public class Grid {
     private final int columns;
     private Cell[][] grid;
     private final Random RANDOM = new Random();
-    private ArrayList<Cell> aliveNeighbors;
+    //private ArrayList<Cell> aliveNeighbors;
     private Algorithm algorithm = new Algorithm(this);
 
     public Grid(int rows, int columns) {
