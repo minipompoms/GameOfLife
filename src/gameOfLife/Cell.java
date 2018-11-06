@@ -5,15 +5,18 @@ import java.util.ArrayList;
 
 public class Cell {
 
-    private Point point;
+    private int x;
+    private int y;
     private boolean isAlive;
-    ArrayList<Cell> neighbors;// = new ArrayList<>();
-    private ArrayList<Cell> aliveNeighbors;
+    private Grid grid;
+    private ArrayList<Cell> allNeighbors = new ArrayList<>();
 
-    public Cell(Point point){
-        this.point = point;
+
+    public Cell(int x, int y, Grid grid) {
+        this.x = x;
+        this.y = y;
+        this.grid = grid;
     }
-
 
     public void setAlive(boolean alive) {
         isAlive = alive;
@@ -23,64 +26,47 @@ public class Cell {
         return isAlive;
     }
 
-    public Point getPoint() {
-        return point;
+    public int getX() {
+        return x;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setX(int x) {
+        this.x = x;
     }
 
-
-    //is there a better way?
-    //need to validate points to ensure they are in the grid
-    //can we do this without making a new point, and instead access the cells in the grid?
-    public void setAllNeighbors(Cell cell) {
-        Point point = new Point();
-        int x = cell.getPoint().x;
-        int y = cell.getPoint().y;
-        point.setLocation(x-1,y-1 );
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x-1, y);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x-1, y+1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x-1, y+1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x, y-1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x, y+1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x+1, y-1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x+1, y);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        point.setLocation(x+1, y+1);
-        cell.setPoint(point);
-        neighbors.add(cell);
-        //return neighbors;
-        setAliveNeighbors();
+    public int getY() {
+        return y;
     }
 
-    public void setAliveNeighbors(){
-        int size = neighbors.size();
-        for(int i = 0; i < size; i++) {
-            Cell neighbor = neighbors.get(i);
-            if(neighbor.isAlive()){
-                aliveNeighbors.add(neighbor);
-            }
-        }
+    public void setY(int y) {
+        this.y = y;
     }
 
-    public ArrayList<Cell> getAliveNeighbors() {
-        return aliveNeighbors;
+    public ArrayList<Cell> setAllNeighbors() {
+        if (verifyPoint(x-1, y-1)){
+            allNeighbors.add(grid.getCell(x-1,y-1));}
+        if (verifyPoint(x-1, y)){
+            allNeighbors.add(grid.getCell(x-1, y));}
+        if (verifyPoint(x-1, y+1)){
+            allNeighbors.add(grid.getCell(x-1,y+1));}
+        if (verifyPoint(x, y-1)){
+            allNeighbors.add(grid.getCell(x,y-1));}
+        if (verifyPoint(x, y+1)){
+            allNeighbors.add(grid.getCell(x,y+1));}
+        if (verifyPoint(x+1, y-1)){
+            allNeighbors.add(grid.getCell(x+1,y-1));}
+        if (verifyPoint(x+1, y)){
+            allNeighbors.add(grid.getCell(x+1,y));}
+        if (verifyPoint(x+1, y+1)){
+            allNeighbors.add(grid.getCell(x+1,y+1));}
+        return allNeighbors;
+    }
+
+    public boolean verifyPoint(int x,int y){
+        return grid.contains(x,y);
+    }
+
+    public ArrayList<Cell> getAllNeighbors() {
+        return allNeighbors;
     }
 }
