@@ -24,26 +24,28 @@ public class Grid {
         setupNeighbors();
     }
 
-    private void setupNeighbors() {
-        for (Cell[] cellRow : grid) {
-            for (Cell cell : cellRow) {
-                cell.setAllNeighbors(cell);
-            }
-
-        }
-    }
-
-
     public void mapGrid() {
         boolean cellState = RANDOM.nextBoolean();
         int x;
         int y;
         for (x = 0; x < rows; x++) {
             for (y = 0; y < columns; y++) {
-                Point point = new Point(x, y);
-                grid[x][y] = new Cell(point);
-                grid[x][y].setAlive(cellState);
+                Cell cell = new Cell(x,y, this);
+                grid[x][y] = cell;
+                cell.setAlive(cellState);
+//                Point point = new Point(x, y);
+//                grid[x][y] = new Cell(point);
+//                grid[x][y].setAlive(cellState);
             }
+        }
+    }
+
+    private void setupNeighbors() {
+        for (Cell[] cellRow : grid) {
+            for (Cell cell : cellRow) {
+                cell.setAllNeighbors();
+            }
+
         }
     }
 
@@ -51,9 +53,10 @@ public class Grid {
         algorithm.getNextGrid();
     }
 
-    public Cell getCell() {
-        return grid[rows][columns];
+    public Cell getCell(int x, int y) {
+        return grid[x][y];
     }
+
 
     public Cell[][] getGrid() {
         return grid;
@@ -87,5 +90,9 @@ public class Grid {
         }
         return gridPrint.toString();
 
+    }
+
+    public boolean contains(int x, int y) {
+        return (x < rows) && (y < columns) && (x >= 0) && (y >= 0);
     }
 }

@@ -10,7 +10,7 @@ public class Algorithm {
 //    Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
     private Grid grid;
-    private ArrayList<Cell> aliveNeighbors;
+    private ArrayList<Cell> aliveNeighbors = new ArrayList<>();
 
 
     public Algorithm(Grid grid) {
