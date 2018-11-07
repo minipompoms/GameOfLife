@@ -58,20 +58,10 @@ public class Grid {
         return grid;
     }
 
+
     @Override
     public String toString() {
-        StringBuilder gridPrint = new StringBuilder();
-        for (Cell[] cellRow : grid) {
-            for (Cell cell : cellRow) {
-                if (cell.isAlive()) {
-                    gridPrint.append("*");
-                } else {
-                    gridPrint.append("-");
-                }
-            }
-            gridPrint.append("\n");
-        }
-        return gridPrint.toString();
+        return algorithm.toString();
     }
 
     public boolean contains(int x, int y) {

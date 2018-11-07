@@ -44,13 +44,31 @@ public class Algorithm {
             Cell neighbor = cell.getAllNeighbors().get(i);
             if(neighbor.isAlive()){
                 aliveNeighbors.add(neighbor);
+                System.out.println(toString());
             }
         }
         return aliveNeighbors;
     }
 
     public Grid getNextGrid() {
-        nextGen(grid);
-        return grid;
+        return nextGen(grid);
     }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for (Cell[] cellRow : grid.getGrid()) {
+            for (Cell cell : cellRow) {
+                if (cell.isAlive()) {
+                    sb.append("*");
+                } else {
+                    sb.append("-");
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+
 }
