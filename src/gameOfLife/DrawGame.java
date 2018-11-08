@@ -10,10 +10,6 @@ public class DrawGame extends JComponent
 	public DrawGame(Grid grid)
 	{
 		this.grid = grid;
-
-		grid.getNextGen();
-
-
 	}
 
 	@Override
@@ -35,7 +31,7 @@ public class DrawGame extends JComponent
 			{
 				Cell cell = grid.getCell(width, height);
 
-				g.setColor(Color.GRAY);
+				g.setColor(Color.LIGHT_GRAY);
 
 				if (cell.isAlive())
 				{

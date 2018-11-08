@@ -2,6 +2,8 @@ package gameOfLife;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameOfLife extends JFrame
 {
@@ -19,15 +21,17 @@ public class GameOfLife extends JFrame
 		grid = new Grid(50, 50);
 		drawGame = new DrawGame(grid);
 
-		/*try
+		ActionListener refresher = new ActionListener()
 		{
-			Thread.sleep(1000);
-		} catch (InterruptedException e)
-		{
-			e.printStackTrace();
-		}*/
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				grid.getNextGen();
+				repaint();
+			}
+		};
 
-		repaint();
+		new Timer(1000, refresher).start();
 
 		panel.add(drawGame, BorderLayout.CENTER);
 
