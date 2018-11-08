@@ -22,8 +22,8 @@ public class DrawGame extends JComponent
 
 	public void drawGrid(Graphics g)
 	{
-		int cellWidth = 700 / (grid.getColumns() + 1);
-		int cellHeight = 700 / (grid.getRows() + 1);
+		int cellWidth = this.getWidth() / grid.getColumns();
+		int cellHeight = this.getHeight() / grid.getRows();
 
 		for (int width = 0; width < grid.getColumns(); width++)
 		{
@@ -31,15 +31,16 @@ public class DrawGame extends JComponent
 			{
 				Cell cell = grid.getCell(width, height);
 
-				g.setColor(Color.LIGHT_GRAY);
-
 				if (cell.isAlive())
 				{
 					g.setColor(Color.BLACK);
+					g.fillRect(cell.getY() * cellWidth, cell.getX() * cellHeight, cellWidth, cellHeight);
 				}
-
-				g.fillRect(cell.getY()*cellWidth, cell.getX()*cellHeight, cellWidth, cellHeight);
-				System.out.println(grid.toString());
+				else
+				{
+					g.setColor(Color.LIGHT_GRAY);
+					g.drawRect(cell.getY() * cellWidth, cell.getX() * cellHeight, cellWidth, cellHeight);
+				}
 			}
 		}
 	}

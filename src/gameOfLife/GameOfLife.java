@@ -10,15 +10,15 @@ public class GameOfLife extends JFrame
 	private  Grid grid;
 	private DrawGame drawGame;
 	public GameOfLife()
-	{
-		setTitle("Game of Life");
+		{
+			setTitle("Game of Life");
 		setSize(700, 700);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 
-		grid = new Grid(50, 50);
+		grid = new Grid(100, 100);
 		drawGame = new DrawGame(grid);
 
 		ActionListener refresher = new ActionListener()
