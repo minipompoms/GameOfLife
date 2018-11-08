@@ -1,4 +1,7 @@
-package gameOfLife;
+package gameOfLife.GUI;
+
+import gameOfLife.Cell;
+import gameOfLife.Grid;
 
 import javax.swing.*;
 import java.awt.*;
