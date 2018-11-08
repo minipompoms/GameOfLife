@@ -10,7 +10,6 @@ public class Algorithm {
 //    Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
     private Grid grid;
-    private ArrayList<Cell> aliveNeighbors = new ArrayList<>();
 
 
     public Algorithm(Grid grid) {
@@ -18,12 +17,10 @@ public class Algorithm {
     }
 
     private Grid nextGen(Grid grid) {
-        int liveNeighbors;
+        setAliveNeighbors(grid);
         for (Cell[] cellRow : grid.getGrid()) {
             for (Cell cell : cellRow) {
-                aliveNeighbors = setAliveNeighbors(cell);
-                liveNeighbors = aliveNeighbors.size();
-                switch (liveNeighbors){
+                switch (cell.getNumLiveNeighbors()) {
                     case (2):
                         break;
                     case (3):
@@ -38,16 +35,21 @@ public class Algorithm {
         return grid;
     }
 
-    private ArrayList<Cell> setAliveNeighbors(Cell cell){
-        int size = cell.getAllNeighbors().size();
-        for(int i = 0; i < size; i++) {
-            Cell neighbor = cell.getAllNeighbors().get(i);
-            if(neighbor.isAlive()){
-                aliveNeighbors.add(neighbor);
-                System.out.println(toString());
+    private void setAliveNeighbors(Grid grid) {
+
+        for (Cell[] cellRow : grid.getGrid()) {
+            for (Cell cell : cellRow) {
+                int numLiveNeighbors = 0;
+                int size = cell.getAllNeighbors().size();
+                for (int i = 0; i < size; i++) {
+                    Cell neighbor = cell.getAllNeighbors().get(i);
+                    if (neighbor.isAlive()) {
+                        numLiveNeighbors++;
+                    }
+                }
+                cell.setNumLiveNeighbors(numLiveNeighbors);
             }
         }
-        return aliveNeighbors;
     }
 
     public Grid getNextGrid() {
@@ -55,7 +57,7 @@ public class Algorithm {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Cell[] cellRow : grid.getGrid()) {
             for (Cell cell : cellRow) {
