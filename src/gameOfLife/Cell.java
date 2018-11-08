@@ -10,6 +10,7 @@ public class Cell {
     private boolean isAlive;
     private Grid grid;
     private ArrayList<Cell> allNeighbors = new ArrayList<>();
+    private int numLiveNeighbors;
 
 
     public Cell(int x, int y, Grid grid) {
@@ -24,22 +25,6 @@ public class Cell {
 
     public boolean isAlive() {
         return isAlive;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public ArrayList<Cell> setAllNeighbors() {
@@ -68,5 +53,13 @@ public class Cell {
 
     public ArrayList<Cell> getAllNeighbors() {
         return allNeighbors;
+    }
+
+    public void setNumLiveNeighbors(int numLiveNeighbors) {
+        this.numLiveNeighbors = numLiveNeighbors;
+    }
+
+    public int getNumLiveNeighbors() {
+        return numLiveNeighbors;
     }
 }

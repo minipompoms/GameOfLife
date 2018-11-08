@@ -58,7 +58,6 @@ public class Grid {
         return grid;
     }
 
-
     @Override
     public String toString() {
         return algorithm.toString();
