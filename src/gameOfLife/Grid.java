@@ -22,6 +22,7 @@ public class Grid {
         //call in the constructor to create
         mapGrid();
         setupNeighbors();
+        //getNextGen();
     }
 
     public void mapGrid() {
@@ -56,6 +57,16 @@ public class Grid {
 
     public Cell[][] getGrid() {
         return grid;
+    }
+
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public int getColumns()
+    {
+        return columns;
     }
 
     @Override
