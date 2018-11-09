@@ -30,11 +30,6 @@ public class GridTest {
         assertFalse(grid.getCell(cell.getX(), cell.getY()).isAlive());
     }
 
-    @Test
-    public void aliveNeighbors() {
-        cell.setNumLiveNeighbors(4);
-        assertEquals(4, cell.getNumLiveNeighbors());
-    }
 
     @Test
     public void nextGeneration() {
@@ -46,7 +41,6 @@ public class GridTest {
         grid.getCell(1, 1).setAlive(true);
         grid.getCell(1, 2).setAlive(true);
         grid.getNextGen();
-
         assertTrue(grid.getCell(0, 1).isAlive());
         assertTrue(grid.getCell(1, 1).isAlive());
         assertTrue(grid.getCell(2, 1).isAlive());

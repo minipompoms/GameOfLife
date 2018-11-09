@@ -21,6 +21,12 @@ public class CellTest {
     }
 
     @Test
+    public void aliveNeighbors() {
+        cell.setNumLiveNeighbors(4);
+        assertEquals(4, cell.getNumLiveNeighbors());
+    }
+
+    @Test
     public void containsNeighbors() {
         cell.setAllNeighbors();
         int count = 0;
