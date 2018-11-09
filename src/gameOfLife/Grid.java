@@ -1,8 +1,6 @@
 package gameOfLife;
 
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Grid {
@@ -11,7 +9,7 @@ public class Grid {
     private final int columns;
     private Cell[][] grid;
     private final Random RANDOM = new Random();
-    private Algorithm algorithm = new Algorithm(this);
+    private NextGeneration nextGeneration = new NextGeneration(this);
     private boolean cellState;
 
     public Grid(int rows, int columns) {
@@ -46,7 +44,7 @@ public class Grid {
     }
 
     public void getNextGen() {
-        algorithm.getNextGrid();
+        nextGeneration.getNextGrid();
     }
 
     public Cell getCell(int x, int y) {
@@ -67,12 +65,11 @@ public class Grid {
         return columns;
     }
 
-    @Override
-    public String toString() {
-        return algorithm.toString();
-    }
-
     public boolean contains(int x, int y) {
         return (x < rows) && (y < columns) && (x >= 0) && (y >= 0);
+    }
+    @Override
+    public String toString() {
+        return nextGeneration.toString();
     }
 }

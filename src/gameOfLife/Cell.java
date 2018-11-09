@@ -38,7 +38,7 @@ public class Cell {
         setNeighbor(x + 1, y + 1);
     }
 
-    public void setNeighbor(int x, int y) {
+    private void setNeighbor(int x, int y) {
         if (grid.contains(x, y)) {
             allNeighbors.add(grid.getCell(x, y));
         }

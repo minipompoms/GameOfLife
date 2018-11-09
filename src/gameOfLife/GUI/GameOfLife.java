@@ -16,10 +16,11 @@ public class GameOfLife extends JFrame {
         setTitle("Game of Life");
         setSize(700, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setLocation(420, 80);
         JPanel panel = new JPanel();
-        Border border = BorderFactory.createEmptyBorder(20, 20, 20, 20);
-        panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.GRAY);
+        Border border = BorderFactory.createEmptyBorder(35, 50, 10, 10);
+        panel.setLayout(new BorderLayout(10, 20));
         panel.setBorder(border);
         grid = new Grid(200, 200);
         drawGame = new DrawGame(grid);

@@ -3,7 +3,7 @@ package gameOfLife;
 
 import java.util.ArrayList;
 
-public class Algorithm {
+public class NextGeneration {
 //    Any live cell with fewer than two live neighbors dies, as if caused by under population.
 //    Any live cell with two or three live neighbors lives on to the next generation.
 //    Any live cell with more than three live neighbors dies, as if by overpopulation.
@@ -12,7 +12,7 @@ public class Algorithm {
     private Grid grid;
 
 
-    public Algorithm(Grid grid) {
+    public NextGeneration(Grid grid) {
         this.grid = grid;
     }
 
