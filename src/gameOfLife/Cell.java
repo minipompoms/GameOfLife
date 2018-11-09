@@ -27,28 +27,21 @@ public class Cell {
         return isAlive;
     }
 
-    public ArrayList<Cell> setAllNeighbors() {
-        if (verifyPoint(x-1, y-1)){
-            allNeighbors.add(grid.getCell(x-1,y-1));}
-        if (verifyPoint(x-1, y)){
-            allNeighbors.add(grid.getCell(x-1, y));}
-        if (verifyPoint(x-1, y+1)){
-            allNeighbors.add(grid.getCell(x-1,y+1));}
-        if (verifyPoint(x, y-1)){
-            allNeighbors.add(grid.getCell(x,y-1));}
-        if (verifyPoint(x, y+1)){
-            allNeighbors.add(grid.getCell(x,y+1));}
-        if (verifyPoint(x+1, y-1)){
-            allNeighbors.add(grid.getCell(x+1,y-1));}
-        if (verifyPoint(x+1, y)){
-            allNeighbors.add(grid.getCell(x+1,y));}
-        if (verifyPoint(x+1, y+1)){
-            allNeighbors.add(grid.getCell(x+1,y+1));}
-        return allNeighbors;
+    public void setAllNeighbors() {
+        setNeighbor(x - 1, y - 1);
+        setNeighbor(x - 1, y);
+        setNeighbor(x - 1, y + 1);
+        setNeighbor(x, y - 1);
+        setNeighbor(x, y + 1);
+        setNeighbor(x + 1, y - 1);
+        setNeighbor(x + 1, y);
+        setNeighbor(x + 1, y + 1);
     }
 
-    public boolean verifyPoint(int x,int y){
-        return grid.contains(x,y);
+    public void setNeighbor(int x, int y) {
+        if (grid.contains(x, y)) {
+            allNeighbors.add(grid.getCell(x, y));
+        }
     }
 
     public ArrayList<Cell> getAllNeighbors() {
@@ -63,13 +56,11 @@ public class Cell {
         return numLiveNeighbors;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return x;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return y;
     }
 }

@@ -22,7 +22,6 @@ public class Grid {
         //call in the constructor to create
         mapGrid();
         setupNeighbors();
-        //getNextGen();
     }
 
     public void mapGrid() {

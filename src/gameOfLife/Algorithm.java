@@ -71,6 +71,4 @@ public class Algorithm {
         }
         return sb.toString();
     }
-
-
 }

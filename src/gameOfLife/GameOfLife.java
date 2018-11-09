@@ -18,20 +18,15 @@ public class GameOfLife extends JFrame
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 
-		grid = new Grid(100, 100);
+		grid = new Grid(200, 200);
 		drawGame = new DrawGame(grid);
 
-		ActionListener refresher = new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				grid.getNextGen();
-				repaint();
-			}
-		};
+		ActionListener refresher = e -> {
+            grid.getNextGen();
+            repaint();
+        };
 
-		new Timer(1000, refresher).start();
+		new Timer(50, refresher).start();
 
 		panel.add(drawGame, BorderLayout.CENTER);
 
