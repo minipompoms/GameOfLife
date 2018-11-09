@@ -19,7 +19,6 @@ public class Grid {
         this.columns = columns;
         this.grid = new Cell[this.rows][this.columns];
 
-        //call in the constructor to create
         mapGrid();
         setupNeighbors();
     }
@@ -46,7 +45,7 @@ public class Grid {
         }
     }
 
-    void getNextGen() {
+    public void getNextGen() {
         algorithm.getNextGrid();
     }
 
